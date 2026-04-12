@@ -1,0 +1,17 @@
+Email System Architecture
+
+CSV File
+↓
+Express API (Upload Endpoint)
+↓
+Multer (File Handler)
+↓
+CSV Parser
+↓
+Email Processing Logic
+↓
+Nodemailer
+↓
+Gmail SMTP Server
+↓
+Recipient Inbox
