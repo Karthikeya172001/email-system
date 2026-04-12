@@ -11,7 +11,7 @@ const upload = multer({ dest: "uploads/" });
 
 // 🔥 ENV CHECK
 if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-  console.error("❌ Missing EMAIL_USER or EMAIL_PASS in environment variables");
+console.error("❌ Missing EMAIL_USER or EMAIL_PASS in environment variables");
 }
 
 // 🔥 QUEUE
@@ -19,63 +19,63 @@ const emailQueue = [];
 
 // 📧 EMAIL CONFIG
 const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
+service: "gmail",
+auth: {
+user: process.env.EMAIL_USER,
+pass: process.env.EMAIL_PASS
+}
 });
 
 // ✅ ROOT
 app.get("/", (req, res) => {
-  res.send("Email system running with Queue 🚀");
+res.send("Email system running with Queue 🚀");
 });
 
 // 🚀 UPLOAD CSV → ADD TO QUEUE
 app.post("/send-emails", upload.single("file"), (req, res) => {
-  if (!req.file) {
-    return res.status(400).send("No file uploaded ❌");
-  }
+if (!req.file) {
+return res.status(400).send("No file uploaded ❌");
+}
 
-  const results = [];
+const results = [];
 
-  fs.createReadStream(req.file.path)
-    .pipe(csv())
-    .on("data", (data) => results.push(data))
-    .on("end", () => {
+fs.createReadStream(req.file.path)
+.pipe(csv())
+.on("data", (data) => results.push(data))
+.on("end", () => {
 
-      // 👉 ADD TO QUEUE
-      results.forEach(user => emailQueue.push(user));
+// 👉 ADD TO QUEUE
+results.forEach(user => emailQueue.push(user));
 
-      console.log("📥 Added to queue:", results.length);
+console.log("📥 Added to queue:", results.length);
 
-      // 🔥 CLEANUP FILE
-      fs.unlinkSync(req.file.path);
+// 🔥 CLEANUP FILE
+fs.unlinkSync(req.file.path);
 
-      res.send("Emails added to queue ✅");
-    });
+res.send("Emails added to queue ✅");
+});
 });
 
 // 🚀 QUEUE WORKER
 setInterval(async () => {
 
-  if (emailQueue.length === 0) return;
+if (emailQueue.length === 0) return;
 
-  const user = emailQueue.shift();
+const user = emailQueue.shift();
 
-  try {
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: user.email,
-      subject: "Queued Email 🚀",
-      text: `Hi ${user.name}, this is a queued email`
-    });
+try {
+await transporter.sendMail({
+from: process.env.EMAIL_USER,
+to: user.email,
+subject: "Queued Email 🚀",
+text: `Hi ${user.name}, this is a queued email`
+});
 
-    console.log("✅ Sent:", user.email);
+console.log("✅ Sent:", user.email);
 
-  } catch (err) {
-    console.log("❌ Failed:", user.email, err.message);
-  }
+} catch (err) {
+console.log("❌ Failed:", user.email, err.message);
+}
 
 }, 3000); // send every 3 seconds
 
@@ -83,5 +83,11 @@ setInterval(async () => {
 const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+console.log(`🚀 Server running on port ${PORT}`);
 });
+
+
+
+
+
+
