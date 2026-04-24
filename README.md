@@ -1,7 +1,5 @@
 writing{variant=“standard” id=“finalreadme”}
 
-demo : https://drive.google.com/file/d/1ek_lKe6HQ3L6Y2XNJ5RYon2VIFZmpmdA/view?usp=share_link
-
 
 🚀 Email Sending Micro-System
 
