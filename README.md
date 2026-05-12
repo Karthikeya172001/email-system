@@ -1,3 +1,4 @@
+
 # 🚀 Email Sending Micro-System
 
 ## 📌 Overview
@@ -9,7 +10,12 @@ It accepts CSV uploads, parses user data, and sends personalized emails using a 
 The project demonstrates backend concepts like file handling, email automation, queue processing, and controlled delivery.
 
 ---
-demo: https://drive.google.com/file/d/1W1ZrSyZpDY4odY31NQ-eMprbOrIENtPM/view?usp=drivesdk
+
+## 🎥 Demo
+
+https://drive.google.com/file/d/1W1ZrSyZpDY4odY31NQ-eMprbOrIENtPM/view?usp=drivesdk
+
+---
 
 # ⚙️ Tech Stack
 
@@ -34,7 +40,7 @@ demo: https://drive.google.com/file/d/1W1ZrSyZpDY4odY31NQ-eMprbOrIENtPM/view?usp
 
 # 📄 CSV Format
 
-csv id="f1k9xm" name,email Karthikeya,your_email@gmail.com John,john@gmail.com 
+csv name,email Karthikeya,your_email@gmail.com John,john@gmail.com 
 
 ---
 
@@ -52,7 +58,7 @@ csv id="f1k9xm" name,email Karthikeya,your_email@gmail.com John,john@gmail.com
 
 ## Send Emails
 
-http id="m7q2pd" POST /send-emails 
+http POST /send-emails 
 
 ### Request
 
@@ -62,13 +68,13 @@ http id="m7q2pd" POST /send-emails
 
 ### Response
 
-text id="r4w8ln" Emails added to queue ✅ 
+text Emails added to queue ✅ 
 
 ---
 
 # 🧠 Architecture Flow
 
-text id="v6t1ka" CSV Upload    ↓ Express API    ↓ Multer File Handler    ↓ CSV Parser    ↓ In-Memory Queue    ↓ Email Worker    ↓ Nodemailer    ↓ SMTP Service    ↓ Recipient Inbox 
+text CSV Upload    ↓ Express API    ↓ Multer File Handler    ↓ CSV Parser    ↓ In-Memory Queue    ↓ Email Worker    ↓ Nodemailer    ↓ SMTP Service    ↓ Recipient Inbox 
 
 ---
 
@@ -90,11 +96,11 @@ This project uses a simple in-memory queue system.
 
 # 🧪 Local Setup
 
-bash id="p3y7dc" git clone <repo-url>  cd email-system  npm install  node server.js 
+bash git clone <repo-url>  cd email-system  npm install  node server.js 
 
 Server runs on:
 
-text id="h8n5vr" http://localhost:5001 
+text http://localhost:5001 
 
 ---
 
@@ -110,7 +116,7 @@ This project uses Gmail SMTP.
 
 Example:
 
-javascript id="u2k4zs" auth: {   user: "your_email@gmail.com",   pass: "your_app_password" } 
+javascript auth: {   user: "your_email@gmail.com",   pass: "your_app_password" } 
 
 ---
 
