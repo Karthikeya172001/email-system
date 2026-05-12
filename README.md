@@ -9,6 +9,7 @@ It accepts CSV uploads, parses user data, and sends personalized emails using a 
 The project demonstrates backend concepts like file handling, email automation, queue processing, and controlled delivery.
 
 ---
+demo: https://drive.google.com/file/d/1W1ZrSyZpDY4odY31NQ-eMprbOrIENtPM/view?usp=drivesdk
 
 # ⚙️ Tech Stack
 
