@@ -1,9 +1,4 @@
 
-## 🎥 Demo
-
-https://drive.google.com/file/d/1W1ZrSyZpDY4odY31NQ-eMprbOrIENtPM/view?usp=drivesdk
-
-
 # 🚀 Email Processing Microservice
 
 ## 📌 Overview
