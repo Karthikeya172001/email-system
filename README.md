@@ -1,82 +1,56 @@
+# 📧 Email Processing Microservice
 
-# 🚀 Email Processing Microservice
+A backend email processing system built using **Node.js** and **Express.js** that accepts CSV uploads, parses recipient data, and sends personalized emails using a queue-based asynchronous processing architecture.
 
-## 📌 Overview
+This project demonstrates backend software engineering concepts including REST APIs, file uploads, CSV parsing, queue-based processing, email automation, SMTP integration, and fault-tolerant system design.
 
-A backend email processing system built using **Node.js** and
-**Express.js** that accepts CSV uploads, parses recipient data, and
-sends personalized emails using a queue-based processing approach.
+---
 
-This project demonstrates backend engineering concepts including REST
-APIs, file handling, CSV parsing, asynchronous processing, email
-automation, and SMTP integration.
+## 🚀 Live Demo
 
-## 🎥 Demo
+**GitHub Repository:** https://github.com/Karthikeya172001/email-system
 
-https://drive.google.com/file/d/1W1ZrSyZpDY4odY31NQ-eMprbOrIENtPM/view?usp=drivesdk
+🎥 **Demo Video:** https://drive.google.com/file/d/1W1ZrSyZpDY4odY31NQ-eMprbOrIENtPM/view?usp=drivesdk
 
-## ⚙️ Tech Stack
-
--   Node.js
--   Express.js
--   Nodemailer
--   Multer
--   csv-parser
+---
 
 ## ✨ Features
 
--   REST API for CSV upload
--   CSV parsing and validation
--   Personalized email generation
--   Queue-based asynchronous email processing
--   Sequential email delivery
--   Basic failed-email logging
--   SMTP integration using Nodemailer
+- REST API for CSV file upload
+- CSV parsing and validation
+- Personalized email generation
+- Queue-based asynchronous email processing
+- Sequential email delivery
+- SMTP integration using Nodemailer
+- Failed email logging
+- Simple and modular backend architecture
 
-## 📂 Project Structure
+---
 
-``` text
-email-system/
-├── controllers/
-├── routes/
-├── middleware/
-├── services/
-├── utils/
-├── uploads/
-├── server.js
-├── package.json
-└── README.md
-```
+## 🛠 Technologies Used
 
-## 📄 CSV Format
+### Backend
 
-``` csv
-name,email
-Karthikeya,your_email@gmail.com
-John,john@gmail.com
-```
+- Node.js
+- Express.js
 
-## 🚀 How It Works
+### Libraries
 
-1.  User uploads a CSV file.
-2.  Express API receives the request.
-3.  Multer stores the uploaded file.
-4.  CSV parser extracts recipient details.
-5.  Records are added to an in-memory queue.
-6.  Worker processes emails sequentially.
-7.  Emails are sent using Nodemailer through SMTP.
+- Nodemailer
+- Multer
+- csv-parser
 
-## 📡 API Endpoint
+### Other Tools
 
-**POST** `/send-emails`
+- Git
+- GitHub
+- Postman
 
-Form-data key: `file`
+---
 
-Response: `Emails added to queue ✅`
+## 🏗 Architecture
 
-## 🧠 Architecture
-
-``` text
+```text
 Client
    │
    ▼
@@ -101,46 +75,155 @@ Nodemailer
 SMTP Server
 ```
 
-## 🧪 Local Setup
+---
 
-``` bash
-git clone https://github.com/Karthikeya172001/email-system
+## 📂 Project Structure
+
+```text
+email-system/
+│
+├── controllers/
+├── middleware/
+├── routes/
+├── services/
+├── uploads/
+├── utils/
+├── server.js
+├── package.json
+└── README.md
+```
+
+---
+
+## 📄 CSV Format
+
+```csv
+name,email
+Karthikeya,your_email@gmail.com
+John,john@gmail.com
+```
+
+---
+
+## 📖 How It Works
+
+1. Upload a CSV file containing recipient information.
+2. The Express API receives the request.
+3. Multer stores the uploaded file.
+4. CSV Parser extracts recipient details.
+5. Email requests are added to an in-memory queue.
+6. A worker processes emails sequentially.
+7. Nodemailer sends emails through the configured SMTP server.
+
+---
+
+## 📡 API Endpoint
+
+### Send Emails
+
+**POST** `/send-emails`
+
+**Content-Type:** `multipart/form-data`
+
+**Form-data Key:** `file`
+
+**Success Response**
+
+```json
+{
+  "message": "Emails added to queue"
+}
+```
+
+---
+
+## ⚙ Local Setup
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Karthikeya172001/email-system.git
+```
+
+Move into the project:
+
+```bash
 cd email-system
+```
+
+Install dependencies:
+
+```bash
 npm install
+```
+
+Start the server:
+
+```bash
 node server.js
 ```
 
-Server: `http://localhost:5001`
+Server runs at:
 
-## 🔐 Email Configuration
+```
+http://localhost:5001
+```
 
-Use Gmail SMTP with an App Password.
+---
 
-``` javascript
+## 🔐 SMTP Configuration
+
+Configure Gmail SMTP using an App Password.
+
+```javascript
 auth: {
   user: "your_email@gmail.com",
   pass: "your_app_password"
 }
 ```
 
-## ⚠️ Current Limitations
+---
 
--   Uses an in-memory queue
--   No persistent storage
--   No retry mechanism
--   No frontend dashboard
+## ⚠ Current Limitations
+
+- Uses an in-memory queue
+- No persistent storage
+- No retry mechanism
+- No authentication
+- No frontend dashboard
+
+---
 
 ## 🚀 Future Improvements
 
--   Redis/BullMQ integration
--   Docker containerization
--   Retry mechanism
--   Persistent queue storage
--   Background worker service
--   Email scheduling
--   Monitoring and logging
--   Rate limiting
+- Redis + BullMQ integration
+- Docker support
+- Background worker service
+- Retry mechanism
+- Persistent queue storage
+- Email scheduling
+- Monitoring and logging
+- Rate limiting
+- Authentication and authorization
+
+---
 
 ## 👨‍💻 Author
 
 **Gorityala Karthikeya**
+
+📧 Email: gorityalakarthikeya@gmail.com
+
+🔗 LinkedIn: https://www.linkedin.com/in/karthikeya-gorityala
+
+💻 GitHub: https://github.com/Karthikeya172001
+
+---
+
+## 📄 License
+
+This project is intended for educational, research, and portfolio purposes.
+
+---
+
+⭐ If you found this project useful, consider giving it a star on GitHub!
